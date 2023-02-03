@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Мариша и Никита</title>
+  </head>
+  <body>
+    <div style="text-align:center;margin-top:100px">
+      <h1 id="time" style="font-size: 20px"></h1>
+    </div>
+    <script type="text/javascript">
+      var startTime = new Date("3 December 2022 21:37:00").getTime();
+      var timeNow = new Date().getTime();
+      var timePassed = (timeNow - startTime) / 1000;
+      document.getElementById("time").innerHTML = "Time Passed: " + Math.round(timePassed) + " seconds";
+      setInterval(function(){
+        timeNow = new Date().getTime();
+        timePassed = (timeNow - startTime) / 1000;
+        document.getElementById("time").innerHTML = "С момента первого поцелуя Марины и Никиты прошло " + Math.round(timePassed) + " секунд";
+      }, 1000);
+    </script>
+  </body>
+</html>
