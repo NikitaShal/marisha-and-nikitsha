@@ -245,3 +245,20 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         timePassed = (timeNow - startTime) / 1000;
         document.getElementById("time").innerHTML = Math.round(timePassed);
       }, 1000);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cells = document.querySelectorAll('.calendar-cell');
+
+    cells.forEach(cell => {
+        const cellDate = new Date(cell.dataset.date);
+        const today = new Date();
+
+        if (today >= cellDate) {
+            cell.classList.add('open');
+            cell.addEventListener('click', () => {
+                // Место для модального окна или alert с подсказкой
+                alert('Подсказка для дня ' + cell.textContent);
+            });
+        }
+    });
+});
