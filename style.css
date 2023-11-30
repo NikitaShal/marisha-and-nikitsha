@@ -207,3 +207,23 @@ a {
 .savepage__btn {
   color: white;
 }
+
+.snowflake {
+  position: fixed;
+  top: -10px;
+  z-index: 9999;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0.8;
+  font-size: 1em;
+  animation-name: fall;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
