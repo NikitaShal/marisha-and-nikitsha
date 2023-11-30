@@ -248,6 +248,9 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const cells = document.querySelectorAll('.calendar-cell');
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const closeButton = document.querySelector('.close');
 
     cells.forEach(cell => {
         const cellDate = new Date(cell.dataset.date);
@@ -256,9 +259,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (today >= cellDate) {
             cell.classList.add('open');
             cell.addEventListener('click', () => {
-                // Место для модального окна или alert с подсказкой
-                alert('Подсказка для дня ' + cell.textContent);
+                modalText.textContent = cell.dataset.text;
+                modal.style.display = 'block';
             });
+        }
+    });
+
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', event => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
     });
 });
