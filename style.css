@@ -227,3 +227,44 @@ a {
     transform: translateY(100vh);
   }
 }
+
+.advent-calendar {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.calendar-cell {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 24px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.calendar-cell:hover {
+    transform: scale(1.05);
+}
+
+.calendar-cell.open {
+    background-color: #a0c4ff;
+}
+
+@media screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
