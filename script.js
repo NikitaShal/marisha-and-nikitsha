@@ -6,6 +6,24 @@ import debounce from "https://cdn.skypack.dev/debounce";
 
 console.log("Я тебя люблю, моя дорогая Марина.");
 
+function createSnowflake() {
+  const snowFlake = document.createElement('span');
+  snowFlake.classList.add('snowflake');
+  snowFlake.textContent = '❄';
+  snowFlake.style.left = Math.random() * 100 + 'vw';
+  snowFlake.style.opacity = Math.random();
+  snowFlake.style.transform = 'scale(' + Math.random() + ')';
+  snowFlake.style.animationDuration = Math.random() * 3 + 2 + 's';
+
+  document.body.appendChild(snowFlake);
+
+  setTimeout(() => {
+    snowFlake.remove();
+  }, 5000);
+}
+
+setInterval(createSnowflake, 100);
+
 // return a random number within a range
 function random(min, max) {
   return Math.random() * (max - min) + min;
