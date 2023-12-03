@@ -14,6 +14,16 @@
             position: relative;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        .advent-title {
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            margin-top: 20px;
+        }
+
         .snowflake {
             color: #fff;
             font-size: 1em;
@@ -100,6 +110,7 @@
     </style>
 </head>
 <body>
+    <div class="advent-title">Адвент-календарь для Маришеньки 2024</div>
     <div class="advent-calendar">
         <h1>Персональный адвент-календарь для любимой Маришеньки</h1>
         <div class="grid">
@@ -117,7 +128,7 @@
 
     <script>
         // Даты для адвент-календаря
-        const dates = ["2023-12-07", "2023-12-10", "2023-12-14", "2023-12-17", "2023-12-21", "2023-12-24", "2023-12-28", "2023-12-31"];
+        const dates = ["2023-12-07", "2023-12-10", "2023-12-14", "2023-12-17", "2023-12-21", "2023-12-24", "2023-12-28", "2023-12-31", new Date().toISOString().split('T')[0]];
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
         const span = document.getElementsByClassName('close')[0];
@@ -133,9 +144,7 @@
                 cell.classList.add('closed');
                 cell.innerHTML = `<p>Закрыто до ${date}</p><p>🔒</p>`;
             } else {
-                cell.innerHTML
-
- = `<p>Открой меня скорее</p><p>❤️</p>`;
+                cell.innerHTML = `<p>Открой меня скорее</p><p>❤️</p>`;
                 cell.addEventListener('click', function() {
                     modal.style.display = 'block';
                 });
