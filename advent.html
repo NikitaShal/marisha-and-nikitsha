@@ -38,7 +38,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1; /* Гарантирует квадратную форму ячеек */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0);
             background: url('https://example.com/christmas-ornament.png') no-repeat center center; /* Фон ячеек с новогодними узорами */
             background-size: cover; /* Убедитесь, что ссылка на изображение корректна */
@@ -63,8 +63,8 @@
             font-size: 1.2em;
         }
 
-        .cell p.lock {
-            font-size: 2em; /* Увеличенный размер эмодзи замка */
+        .cell p.lock, .cell p.heart {
+            font-size: 2em; /* Увеличенный размер эмодзи */
         }
 
         .modal {
@@ -156,7 +156,7 @@
                 cell.innerHTML = `<p>Закрыто до ${date}</p><p class='lock'>🔒</p>`;
             } else {
                 cell.classList.add('cell', 'open');
-                cell.innerHTML = `<p>Открой меня скорее</p><p>❤️</p>`;
+                cell.innerHTML = `<p>Открой меня скорее</p><p class='heart'>❤️</p>`;
                 cell.addEventListener('click', function() {
                     modal.style.display = 'block';
                 });
