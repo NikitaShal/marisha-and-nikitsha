@@ -8,9 +8,8 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: auto; 
             font-family: Arial, sans-serif;
+            overflow: auto; /* Изменено для разрешения прокрутки */
         }
 
         .background {
@@ -39,7 +38,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Стили для контента сайта */
         .content {
             position: relative;
             z-index: 1;
@@ -55,7 +53,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 15px;
             margin: auto;
             max-width: 600px;
@@ -67,6 +65,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            aspect-ratio: 1 / 1; /* Добавлено для создания более квадратных ячеек */
         }
 
         .cell:hover {
@@ -81,7 +80,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 2;
             left: 0;
             top: 0;
             width: 100%;
@@ -116,7 +115,7 @@
 
         @media (max-width: 600px) {
             .grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                grid-template-columns: repeat(2, 1fr); /* Изменено на 2 ячейки в строке для мобильных устройств */
             }
 
             .advent-calendar h1 {
