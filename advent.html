@@ -188,8 +188,20 @@
 
     <script>
         const dates = ["03.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023"];
+        const modalData = {
+            "03.12.2023": "Текст для 3 декабря",
+            "07.12.2023": "Текст для 7 декабря",
+            "10.12.2023": "Текст для 10 декабря",
+            "14.12.2023": "Текст для 14 декабря",
+            "17.12.2023": "Текст для 17 декабря",
+            "21.12.2023": "Текст для 21 декабря",
+            "24.12.2023": "Текст для 24 декабря",
+            "28.12.2023": "Текст для 28 декабря",
+            "31.12.2023": "Текст для 31 декабря"
+        };
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modal-text');
         const span = document.getElementsByClassName('close')[0];
 
         function animateCells() {
@@ -212,8 +224,8 @@
 
             cell.addEventListener('click', function() {
                 if (this.classList.contains('open')) {
+                    modalText.textContent = modalData[date];
                     modal.style.display = 'block';
-                    modal.querySelector('.modal-content').style.animation = 'modalAnimation 0.5s ease';
                 }
             });
 
