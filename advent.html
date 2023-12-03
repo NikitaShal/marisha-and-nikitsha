@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Адвент-календарь для Маришеньки</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -21,6 +22,7 @@
         }
 
         .advent-calendar h1 {
+            font-family: 'Dancing Script', cursive;
             font-size: 24px;
             margin-bottom: 20px;
         }
@@ -38,14 +40,8 @@
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 1 / 1; /* Гарантирует квадратную форму ячеек */
+            aspect-ratio: 1 / 1;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-            background-size: cover; /* Убедитесь, что ссылка на изображение корректна */
-            background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
-            background-image: url('/bg-cards.png'); /* Фоновое изображение */
-            background-blend-mode: darken; /* Режим смешивания для затемнения изображения */
-            background-repeat: no-repeat;
-            background-position: center center;
             background-size: cover;
         }
 
@@ -57,25 +53,30 @@
         .cell.closed {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
+            background-image: url('путь_к_фону_закрытой_ячейки');
         }
 
         .cell.open {
             background-color: rgba(139, 0, 0, 0.8);
             color: white;
-            background-color: rgba(0, 0, 0, 0.5); /* Темный полупрозрачный фон */
-            background-image: url('/bg-cards-open.png'); /* Фоновое изображение */
-            background-blend-mode: darken; /* Режим смешивания для затемнения изображения */
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
         }
+
+        /* Уникальные фоны для открытых ячеек */
+        .cell.open[data-date="07.12.2023"] { background-image: url('путь_к_фону_ячейки_1'); }
+        .cell.open[data-date="10.12.2023"] { background-image: url('путь_к_фону_ячейки_2'); }
+        .cell.open[data-date="14.12.2023"] { background-image: url('путь_к_фону_ячейки_3'); }
+        .cell.open[data-date="17.12.2023"] { background-image: url('путь_к_фону_ячейки_4'); }
+        .cell.open[data-date="21.12.2023"] { background-image: url('путь_к_фону_ячейки_5'); }
+        .cell.open[data-date="24.12.2023"] { background-image: url('путь_к_фону_ячейки_6'); }
+        .cell.open[data-date="28.12.2023"] { background-image: url('путь_к_фону_ячейки_7'); }
+        .cell.open[data-date="31.12.2023"] { background-image: url('путь_к_фону_ячейки_8'); }
 
         .cell p {
             font-size: 1.2em;
         }
 
         .cell p.lock, .cell p.heart {
-            font-size: 2em; /* Увеличенный размер эмодзи */
+            font-size: 2em;
         }
 
         .modal {
@@ -152,7 +153,7 @@
     </div>
 
     <script>
-        const dates = ["07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023", new Date().toLocaleDateString('ru-RU')];
+        const dates = ["31.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023"];
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
         const span = document.getElementsByClassName('close')[0];
@@ -162,17 +163,16 @@
             const currentDate = new Date();
             const cellDate = new Date(date.split('.').reverse().join('-'));
 
-            if (currentDate < cellDate) {
-                cell.classList.add('cell', 'closed');
-                cell.innerHTML = `<p>Закрыто до ${date}</p><p class='lock'>🔒</p>`;
-            } else {
-                cell.classList.add('cell', 'open');
-                cell.innerHTML = `<p>Открой меня скорее</p><p class='heart'>❤️</p>`;
-                cell.addEventListener('click', function() {
+            cell.classList.add('cell', currentDate < cellDate ? 'closed' : 'open');
+            cell.setAttribute('data-date', date);
+            cell.innerHTML = `<p>${currentDate < cellDate ? 'Закрыто до ' + date : 'Открой меня скорее'}</p><p class='${currentDate < cellDate ? 'lock' : 'heart'}'>${currentDate < cellDate ? '🔒' : '❤️'}</p>`;
+
+            cell.addEventListener('click', function() {
+                if (this.classList.contains('open')) {
                     modal.style.display = 'block';
-                });
-            }
-            
+                }
+            });
+
             grid.appendChild(cell);
         });
 
