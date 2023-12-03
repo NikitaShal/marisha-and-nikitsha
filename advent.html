@@ -47,6 +47,7 @@
             width: 80%; /* Измените значение ширины на процент, чтобы она помещалась в ряд */
             opacity: 0; /* Добавьте начальное значение прозрачности */
             transform: translateY(20px); /* Сдвиньте блоки вниз */
+            animation: fadeIn 0.5s ease-in-out forwards;
         }
 
         .cell:hover {
@@ -154,6 +155,11 @@
                 font-size: 20px;
             }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -183,11 +189,11 @@
         function animateCells() {
             const cells = document.querySelectorAll('.cell');
             cells.forEach((cell, index) => {
-                setTimeout(() => {
-                    cell.classList.add('animate');
-                }, index * 200); // Задержка между появлением блоков (в данном случае 200 миллисекунд)
+                // Устанавливаем задержку анимации в зависимости от индекса ячейки
+                cell.style.animationDelay = `${index * 200}ms`;
             });
         }
+
 
         dates.forEach(date => {
             const cell = document.createElement('div');
