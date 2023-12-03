@@ -36,6 +36,7 @@
         }
 
         .cell {
+            padding: 20px;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -43,21 +44,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: darken;
             background-size: cover;
-            position: relative;
-            width: 100%;
-            padding-top: 100%; /* Для поддержания квадратной формы */
-        }
-
-        .cell-content {
-            position: absolute;
-            top: 10px;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 100%; /* Для поддержания квадратной формы */
         }
 
         .cell:hover {
@@ -75,10 +62,19 @@
             background-color: rgba(139, 0, 0, 0.8);
         }
 
+        /* Уникальные фоны для открытых ячеек */
+        .cell.open[data-date="03.12.2023"] { background-image: url('path_to_your_image_1'); }
+        .cell.open[data-date="07.12.2023"] { background-image: url('path_to_your_image_2'); }
+        .cell.open[data-date="10.12.2023"] { background-image: url('path_to_your_image_3'); }
+        .cell.open[data-date="14.12.2023"] { background-image: url('path_to_your_image_4'); }
+        .cell open[data-date="17.12.2023"] { background-image: url('path_to_your_image_5'); }
+        .cell.open[data-date="21.12.2023"] { background-image: url('path_to_your_image_6'); }
+        .cell.open[data-date="24.12.2023"] { background-image: url('path_to_your_image_7'); }
+        .cell.open[data-date="28.12.2023"] { background-image: url('path_to_your_image_8'); }
+        .cell.open[data-date="31.12.2023"] { background-image: url('path_to_your_image_9'); }
+
         .cell p {
             font-size: 1.2em;
-            margin: 0;
-            text-align: center;
         }
 
         .cell p.lock, .cell p.heart {
@@ -132,6 +128,10 @@
         @media (max-width: 600px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cell {
+                height: 140px; /* Фиксированная высота для поддержания квадратной формы */
             }
 
             .advent-calendar h1 {
