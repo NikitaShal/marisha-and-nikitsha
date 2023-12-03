@@ -42,10 +42,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             aspect-ratio: 1 / 1;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-            background: url('/bg-cards.png') no-repeat center center;
-            background-size: cover;
-            background-color: rgba(0, 0, 0, 0.6); /* Затемнение фона */
+            background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: darken;
+            background-size: cover;
         }
 
         .cell:hover {
@@ -55,12 +54,24 @@
 
         .cell.closed {
             color: white;
+            background-image: url('/bg-cards.png');
         }
 
         .cell.open {
-            background-color: rgba(139, 0, 0, 0.8);
             color: white;
+            background-color: rgba(139, 0, 0, 0.8);
         }
+
+        /* Уникальные фоны для открытых ячеек */
+        .cell.open[data-date="03.12.2023"] { background-image: url('path_to_your_image_1'); }
+        .cell.open[data-date="07.12.2023"] { background-image: url('path_to_your_image_2'); }
+        .cell.open[data-date="10.12.2023"] { background-image: url('path_to_your_image_3'); }
+        .cell.open[data-date="14.12.2023"] { background-image: url('path_to_your_image_4'); }
+        .cell.open[data-date="17.12.2023"] { background-image: url('path_to_your_image_5'); }
+        .cell.open[data-date="21.12.2023"] { background-image: url('path_to_your_image_6'); }
+        .cell.open[data-date="24.12.2023"] { background-image: url('path_to_your_image_7'); }
+        .cell.open[data-date="28.12.2023"] { background-image: url('path_to_your_image_8'); }
+        .cell.open[data-date="31.12.2023"] { background-image: url('path_to_your_image_9'); }
 
         .cell p {
             font-size: 1.2em;
