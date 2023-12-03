@@ -10,6 +10,7 @@
             padding: 0;
             height: 100%;
             overflow: hidden;
+            font-family: Arial, sans-serif;
         }
 
         .background {
@@ -42,42 +43,20 @@
         .content {
             position: relative;
             z-index: 1;
-            /* Добавьте сюда свои стили */
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-        
-        .advent-title {
-            font-family: 'Dancing Script', cursive;
-            text-align: center;
             color: white;
-            font-size: 40px;
-            margin-top: 20px;
-        }
-
-        .snowflake {
-            color: #fff;
-            font-size: 1em;
-            position: absolute;
-            top: -2em;
-        }
-
-        .advent-calendar {
+            padding: 20px;
             text-align: center;
-            padding-top: 20px;
         }
 
         .advent-calendar h1 {
-            color: white;
             font-size: 24px;
             margin-bottom: 20px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 15px;
-            padding: 10px;
             margin: auto;
             max-width: 600px;
         }
@@ -97,10 +76,6 @@
         .cell.closed {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
-        }
-
-        .cell p {
-            margin: 10px 0;
         }
 
         .modal {
@@ -138,17 +113,27 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .advent-calendar h1 {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="content">
-    <div class="advent-title">Адвент-календарь для Маришеньки 2024</div>
-    <div class="advent-calendar">
-        <div class="grid">
-            <!-- Календарные ячейки будут здесь -->
+        <div class="advent-calendar">
+            <h1>Персональный адвент-календарь для любимой Маришеньки</h1>
+            <div class="grid">
+                <!-- Календарные ячейки будут здесь -->
+            </div>
         </div>
-    </div>
 
         <!-- Модальное окно -->
         <div id="modal" class="modal">
@@ -197,21 +182,6 @@
                 modal.style.display = 'none';
             }
         };
-
-        // Генерация снежинок
-        setInterval(() => {
-            const snowFlake = document.createElement('span');
-            snowFlake.classList.add('snowflake');
-            snowFlake.textContent = '❄';
-            snowFlake.style.left = Math.random() * 100 + 'vw';
-            snowFlake.style.opacity = Math.random();
-            snowFlake.style.transform = 'scale(' + Math.random() + ')';
-            snowFlake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(snowFlake);
-            setTimeout(() => {
-                snowFlake.remove();
-            }, 5000);
-        }, 100);
     </script>
 </body>
 </html>
