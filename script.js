@@ -275,3 +275,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cells = document.querySelectorAll('.calendar-cell');
+
+    cells.forEach(cell => {
+        const cellDate = new Date(cell.getAttribute('data-date'));
+        const today = new Date();
+
+        // Установка начального текста в зависимости от статуса ячейки
+        if (today.setHours(0, 0, 0, 0) < cellDate.setHours(0, 0, 0, 0)) {
+            cell.textContent = '🔒 Закрыто';
+        } else {
+            cell.textContent = '❤️ Открывай скорее';
+            cell.classList.add('open');
+            cell.addEventListener('click', () => {
+                // Отображение текста подсказки в модальном окне
+                // ...
+            });
+        }
+    });
+
