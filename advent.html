@@ -45,6 +45,8 @@
             background-blend-mode: darken;
             background-size: cover;
             width: 80%; /* Измените значение ширины на процент, чтобы она помещалась в ряд */
+            opacity: 0; /* Добавьте начальное значение прозрачности */
+            transform: translateY(20px); /* Сдвиньте блоки вниз */
         }
 
         .cell:hover {
@@ -151,7 +153,7 @@
         }
         
         .cell.animate {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out forwards;
             animation-fill-mode: both;
             opacity: 0;
         }
