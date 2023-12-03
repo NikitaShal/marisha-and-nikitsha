@@ -157,6 +157,26 @@
             animation-fill-mode: both;
             opacity: 0;
         }
+
+        .cell.back-button {
+            background-image: url('/bg-cards.png'); /* Фон, как у закрытой ячейки */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cell.back-button button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .cell.back-button button:hover {
+            color: #ccc; /* Изменение цвета при наведении */
+        }
     </style>
 </head>
 <body>
@@ -165,6 +185,10 @@
             <h1>Персональный адвент-календарь для любимой Маришеньки</h1>
             <div class="grid">
                 <!-- Календарные ячейки будут здесь -->
+
+                    <div class="cell back-button">
+                        <button onclick="goBack()">Назад</button>
+                    </div>
             </div>
         </div>
 
@@ -223,6 +247,10 @@
         window.onload = function() {
             animateCells();
         };
+
+        function goBack() {
+            window.history.back(); // Возвращает пользователя на предыдущую страницу
+        }
     </script>
 </body>
 </html>
