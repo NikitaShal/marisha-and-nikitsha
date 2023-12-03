@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            overflow: auto; /* Изменено для разрешения прокрутки */
+            overflow: auto;
         }
 
         .background {
@@ -60,12 +60,11 @@
         }
 
         .cell {
-            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease;
-            aspect-ratio: 1 / 1; /* Добавлено для создания более квадратных ячеек */
+            aspect-ratio: 1 / 1;
         }
 
         .cell:hover {
@@ -75,6 +74,11 @@
         .cell.closed {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
+        }
+
+        .cell.open {
+            background-color: rgba(139, 0, 0, 0.8); /* Красный фон для открытых ячеек */
+            color: white; /* Белый текст для лучшей читаемости */
         }
 
         .modal {
@@ -115,7 +119,7 @@
 
         @media (max-width: 600px) {
             .grid {
-                grid-template-columns: repeat(2, 1fr); /* Изменено на 2 ячейки в строке для мобильных устройств */
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .advent-calendar h1 {
@@ -144,23 +148,21 @@
     </div>
 
     <script>
-        // Даты для адвент-календаря
         const dates = ["2023-12-07", "2023-12-10", "2023-12-14", "2023-12-17", "2023-12-21", "2023-12-24", "2023-12-28", "2023-12-31", new Date().toISOString().split('T')[0]];
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
         const span = document.getElementsByClassName('close')[0];
 
-        // Создание ячеек календаря
         dates.forEach(date => {
             const cell = document.createElement('div');
-            cell.classList.add('cell');
             const currentDate = new Date();
             const cellDate = new Date(date);
 
             if (currentDate < cellDate) {
-                cell.classList.add('closed');
+                cell.classList.add('cell', 'closed');
                 cell.innerHTML = `<p>Закрыто до ${date}</p><p>🔒</p>`;
             } else {
+                cell.classList.add('cell', 'open');
                 cell.innerHTML = `<p>Открой меня скорее</p><p>❤️</p>`;
                 cell.addEventListener('click', function() {
                     modal.style.display = 'block';
@@ -170,12 +172,10 @@
             grid.appendChild(cell);
         });
 
-        // Закрытие модального окна
         span.onclick = function() {
             modal.style.display = 'none';
         };
 
-        // Закрытие модального окна при клике вне его
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
