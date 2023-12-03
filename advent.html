@@ -202,8 +202,8 @@
         };
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
-        const modalText = document.getElementById('modal-text');
-        const span = document.getElementsByClassName('close')[0];
+        const modalText = document.getElementById('modal-text'); // Убедитесь, что у параграфа в модальном окне есть id="modal-text"
+        const span = document.querySelector('.modal .close');
 
         function animateCells() {
             const cells = document.querySelectorAll('.cell');
