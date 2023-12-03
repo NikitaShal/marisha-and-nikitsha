@@ -5,13 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Адвент-календарь для Маришеньки</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('https://cdn.pixabay.com/photo/2017/12/10/15/16/white-3010124_1280.jpg');
-            background-size: cover;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                60deg, 
+                rgba(255, 0, 0, 0.5) 0%, 
+                rgba(0, 255, 0, 0.5) 33%, 
+                rgba(255, 255, 0, 0.5) 66%, 
+                rgba(0, 0, 255, 0.5) 100%
+            );
+            background-size: 400% 400%;
+            animation: moveBackground 20s ease infinite;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Стили для контента сайта */
+        .content {
             position: relative;
+            z-index: 1;
+            /* Добавьте сюда свои стили */
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
@@ -110,6 +140,8 @@
     </style>
 </head>
 <body>
+    <div class="background"></div>
+    <div class="content">
     <div class="advent-title">Адвент-календарь для Маришеньки 2024</div>
     <div class="advent-calendar">
         <h1>Персональный адвент-календарь для любимой Маришеньки</h1>
@@ -118,11 +150,12 @@
         </div>
     </div>
 
-    <!-- Модальное окно -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Текст подсказки</p>
+        <!-- Модальное окно -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Текст подсказки</p>
+            </div>
         </div>
     </div>
 
