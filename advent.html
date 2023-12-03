@@ -53,23 +53,13 @@
         .cell.closed {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            background-image: url('путь_к_фону_закрытой_ячейки');
+            background-image: url('/bg-cards.png');
         }
 
         .cell.open {
             background-color: rgba(139, 0, 0, 0.8);
             color: white;
         }
-
-        /* Уникальные фоны для открытых ячеек */
-        .cell.open[data-date="07.12.2023"] { background-image: url('путь_к_фону_ячейки_1'); }
-        .cell.open[data-date="10.12.2023"] { background-image: url('путь_к_фону_ячейки_2'); }
-        .cell.open[data-date="14.12.2023"] { background-image: url('путь_к_фону_ячейки_3'); }
-        .cell.open[data-date="17.12.2023"] { background-image: url('путь_к_фону_ячейки_4'); }
-        .cell.open[data-date="21.12.2023"] { background-image: url('путь_к_фону_ячейки_5'); }
-        .cell.open[data-date="24.12.2023"] { background-image: url('путь_к_фону_ячейки_6'); }
-        .cell.open[data-date="28.12.2023"] { background-image: url('путь_к_фону_ячейки_7'); }
-        .cell.open[data-date="31.12.2023"] { background-image: url('путь_к_фону_ячейки_8'); }
 
         .cell p {
             font-size: 1.2em;
@@ -153,7 +143,7 @@
     </div>
 
     <script>
-        const dates = ["31.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023"];
+        const dates = ["03.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023"];
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
         const span = document.getElementsByClassName('close')[0];
