@@ -187,6 +187,7 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
         const dates = ["03.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023"];
         const modalData = {
             "03.12.2023": "Текст для 3 декабря",
@@ -256,6 +257,8 @@
         window.onload = function() {
             animateCells();
         };
+
+    });
     </script>
 </body>
 </html>
