@@ -242,6 +242,11 @@
         // Добавление обработчика события
         const backButton = backButtonCell.querySelector('button');
         backButton.addEventListener('click', goBack);
+        
+        // Добавление обработчика события
+        function goBack() {
+            window.location.href = 'https://marisha-and-nikitsha.vercel.app/';
+        }
 
         span.addEventListener('click', function() {
             modal.style.display = 'none';
