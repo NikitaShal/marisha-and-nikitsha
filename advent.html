@@ -9,39 +9,13 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            overflow: auto;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                60deg, 
-                rgba(0, 0, 0, 0.8) 0%, 
-                rgba(139, 0, 0, 0.6) 25%, 
-                rgba(0, 128, 0, 0.6) 50%, 
-                rgba(0, 0, 139, 0.6) 75%,
-                rgba(0, 0, 0, 0.8) 100%
-            );
-            background-size: 400% 400%;
-            animation: moveBackground 30s ease infinite;
-            filter: blur(8px);
-            z-index: -1;
-        }
-
-        @keyframes moveBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background-color: white; /* Установлен белый фон */
         }
 
         .content {
             position: relative;
             z-index: 1;
-            color: white;
+            color: black; /* Изменен цвет текста на черный */
             padding: 20px;
             text-align: center;
         }
@@ -63,12 +37,14 @@
             padding: 20px;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Добавлен эффект тени */
             aspect-ratio: 1 / 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0); /* Начальная тень */
         }
 
         .cell:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Эффект свечения при наведении */
         }
 
         .cell.closed {
@@ -77,8 +53,8 @@
         }
 
         .cell.open {
-            background-color: rgba(139, 0, 0, 0.8); /* Красный фон для открытых ячеек */
-            color: white; /* Белый текст для лучшей читаемости */
+            background-color: rgba(139, 0, 0, 0.8);
+            color: white;
         }
 
         .modal {
@@ -101,6 +77,14 @@
             border: 1px solid #888;
             width: 80%;
             max-width: 500px;
+            border-radius: 50%; /* Форма сердечка */
+            text-align: center;
+            animation: modalAnimation 0.5s; /* Анимация появления */
+        }
+
+        @keyframes modalAnimation {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
         }
 
         .close {
@@ -129,7 +113,6 @@
     </style>
 </head>
 <body>
-    <div class="background"></div>
     <div class="content">
         <div class="advent-calendar">
             <h1>Персональный адвент-календарь для любимой Маришеньки</h1>
@@ -142,13 +125,13 @@
         <div id="modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Текст подсказки</p>
+                <p>Здесь будет текст подсказки...</p>
             </div>
         </div>
     </div>
 
     <script>
-        const dates = ["2023-12-07", "2023-12-10", "2023-12-14", "2023-12-17", "2023-12-21", "2023-12-24", "2023-12-28", "2023-12-31", new Date().toISOString().split('T')[0]];
+        const dates = ["07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023", new Date().toLocaleDateString('ru-RU')];
         const grid = document.querySelector('.grid');
         const modal = document.getElementById('modal');
         const span = document.getElementsByClassName('close')[0];
@@ -156,7 +139,7 @@
         dates.forEach(date => {
             const cell = document.createElement('div');
             const currentDate = new Date();
-            const cellDate = new Date(date);
+            const cellDate = new Date(date.split('.').reverse().join('-'));
 
             if (currentDate < cellDate) {
                 cell.classList.add('cell', 'closed');
