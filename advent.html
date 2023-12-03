@@ -236,13 +236,12 @@
         // Добавление кнопки "Назад"
         const backButtonCell = document.createElement('div');
         backButtonCell.classList.add('cell', 'back-button');
-        backButtonCell.innerHTML = `<button onclick="goBack()">Назад</button>`;
+        backButtonCell.innerHTML = '<button>Назад</button>';
         grid.appendChild(backButtonCell);
-
-        // Функция "Назад"
-        function goBack() {
-            window.history.back();
-        }
+        
+        // Добавление обработчика события
+        const backButton = backButtonCell.querySelector('button');
+        backButton.addEventListener('click', goBack);
 
         span.addEventListener('click', function() {
             modal.style.display = 'none';
