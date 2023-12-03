@@ -249,6 +249,7 @@ a {
     background-image: url('snowflake-icon.png'); /* Иконка снежинки */
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
 }
 
 /* Стили для модального окна */
