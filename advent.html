@@ -181,7 +181,7 @@
         <div id="modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Здесь будет текст подсказки...</p>
+                <p id="modal-text">Здесь будет текст подсказки...</p> <!-- Этот текст будет обновляться -->
             </div>
         </div>
     </div>
@@ -244,9 +244,9 @@
             window.history.back();
         }
 
-        span.onclick = function() {
+        span.addEventListener('click', function() {
             modal.style.display = 'none';
-        };
+        });
 
         window.onclick = function(event) {
             if (event.target == modal) {
