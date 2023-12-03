@@ -42,7 +42,10 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             aspect-ratio: 1 / 1;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            background: url('/bg-cards.png') no-repeat center center;
             background-size: cover;
+            background-color: rgba(0, 0, 0, 0.6); /* Затемнение фона */
+            background-blend-mode: darken;
         }
 
         .cell:hover {
@@ -51,9 +54,7 @@
         }
 
         .cell.closed {
-            background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            background-image: url('/bg-cards.png');
         }
 
         .cell.open {
