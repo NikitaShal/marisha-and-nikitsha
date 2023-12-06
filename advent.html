@@ -217,10 +217,12 @@
         dates.forEach(date => {
             const cell = document.createElement('div');
             const currentDate = new Date();
-            const cellDate = new Date(date.split('.').reverse().join('-'));
-
+            const formattedDate = date.split('.').reverse().join('-'); // Преобразование даты в формат YYYY-MM-DD
+            const cellDate = new Date(formattedDate + "T00:00:00"); // Добавление времени для точности
+        
             cell.classList.add('cell', currentDate < cellDate ? 'closed' : 'open');
             cell.setAttribute('data-date', date);
+
             cell.innerHTML = `<p>${currentDate < cellDate ? 'Закрыто до ' + date : 'Открой меня скорее'}</p><p class='${currentDate < cellDate ? 'lock' : 'heart'}'>${currentDate < cellDate ? '🔒' : '❤️'}</p>`;
 
             cell.addEventListener('click', function() {
