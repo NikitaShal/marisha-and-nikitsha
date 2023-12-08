@@ -188,22 +188,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        const dates = ["03.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023"];
-        const modalData = {
-            "03.12.2023": "Приветики, Любимка! Наконец-то обновления на твоем любимом сайте, да да, я про него не забыл! Это твой персональный адвент-календарь созданный мной полностью своими руками. Ты можешь заходить в даты, когда ячейки будут открываться, нажимать на них и открывать подсказки, где искать новый подарок. Каждая дата - новый подарок. Не всегда это что-то физическое, но всегда приятное(я очень надеюсь). Я тебя очень очень очень люблю и надеюсь этот календарь тебе понравится!",
-            "07.12.2023": "В первой подсказке не буду сильно юлить, ты и так будешь после перелета, вот прямая инструкция: От тебя требуется только не полениться и спуститься к машине(ключи лежат у зеркала в корридоре), твой подарок ждет тебя, моя любимая Passenger Princess :*",
-            "10.12.2023": 'Чтобы получить код от озона возле нашего дома и забрать подарок, нужно позвонить Никите и наговорить так много приятного, чтобы он растаял, и отдал код, хихи!',
-            "14.12.2023": '<img src="sert.jpg" alt="Сертификат" style="max-width: 100%; height: auto;"> Без лишних слов, в этот раз идти никуда не нужно, просто наслаждайся. Активировать его можно в течение 3х месяцев, на 4 занятия, как ты и хотела. Напиши им в инст и скинь серт :*',
-            "17.12.2023": "Текст для 17 декабря",
-            "21.12.2023": "Текст для 21 декабря",
-            "24.12.2023": "Текст для 24 декабря",
-            "28.12.2023": "Текст для 28 декабря",
-            "31.12.2023": "Текст для 31 декабря"
-        };
-        const grid = document.querySelector('.grid');
-        const modal = document.getElementById('modal');
-        const modalText = document.getElementById('modal-text'); // Убедитесь, что у параграфа в модальном окне есть id="modal-text"
-        const span = document.querySelector('.modal .close');
+    const dates = ["03.12.2023", "07.12.2023", "10.12.2023", "14.12.2023", "17.12.2023", "21.12.2023", "24.12.2023", "28.12.2023", "31.12.2023"];
+    const grid = document.querySelector('.grid');
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text'); 
+    const span = document.querySelector('.modal .close');
 
         function animateCells() {
             const cells = document.querySelectorAll('.cell');
@@ -211,6 +200,17 @@
                 // Устанавливаем задержку анимации в зависимости от индекса ячейки
                 cell.style.animationDelay = `${index * 200}ms`;
             });
+        }
+
+        function fetchModalData(date) {
+            fetch('path_to_your_json_file.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data[date]) {
+                        modalText.innerHTML = data[date].content;
+                        modal.style.display = 'block';
+                    }
+                });
         }
 
 
@@ -227,11 +227,10 @@
 
             cell.addEventListener('click', function() {
                 if (this.classList.contains('open')) {
-                    modalText.textContent = modalData[date];
-                    modal.style.display = 'block';
+                    fetchModalData(date);
                 }
             });
-
+    
             grid.appendChild(cell);
         });
 
