@@ -203,7 +203,7 @@
         }
 
         function fetchModalData(date) {
-            fetch('path_to_your_json_file.json')
+            fetch('/data.json')
                 .then(response => response.json())
                 .then(data => {
                     if (data[date]) {
