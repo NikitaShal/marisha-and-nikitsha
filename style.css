@@ -70,15 +70,26 @@ strong {
 }
 
 .overlay__inner {
-  max-width: 36rem;
+  display: flex;
+  flex-direction: row; /* Размещает элементы в одну линию */
+  align-items: center; /* Центрирует элементы по вертикали */
+  justify-content: space-between; /* Создает пространство между текстом и изображением */
 }
 
-.overlay__title {
-  font-size: 1.875rem;
-  line-height: 2.75rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 2rem;
+.overlay__title, .overlay__description, .overlay__btns {
+  flex: 1; /* Текстовая часть займет больше места */
+}
+
+.overlay__image {
+  flex: 0.4; /* Установите пропорцию для изображения */
+  max-width: 300px; /* Максимальная ширина изображения */
+}
+
+.overlay__image img {
+  width: 100%;
+  height: auto; /* Сохраняет пропорции изображения */
+  border-radius: 15px; /* Сделайте края округлыми, если нужно */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Небольшая тень */
 }
 
 .text-gradient {
