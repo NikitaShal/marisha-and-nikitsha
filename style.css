@@ -83,8 +83,8 @@ strong {
 }
 
 #oursimg {
-  width: 20%;
-  height: auto; /* Сохраняет пропорции изображения */
+  height: 50px;
+  width: auto; /* Сохраняет пропорции изображения */
 }
 
 .text-gradient {
