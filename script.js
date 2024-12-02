@@ -2,8 +2,6 @@ import * as PIXI from "https://cdn.skypack.dev/pixi.js@5.x";
 import { KawaseBlurFilter } from "https://cdn.skypack.dev/@pixi/filter-kawase-blur@3.2.0";
 import SimplexNoise from "https://cdn.skypack.dev/simplex-noise@3.0.0";
 import hsl from "https://cdn.skypack.dev/hsl-to-hex";
-// Импортируем debounce из lodash
-import debounce from "https://cdn.jsdelivr.net/npm/lodash.debounce@4.0.8/index.min.js";
 
 console.log("Я тебя люблю, моя дорогая Марина.");
 
