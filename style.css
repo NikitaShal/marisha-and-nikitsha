@@ -70,10 +70,7 @@ strong {
 }
 
 .overlay__inner {
-  display: flex;
-  flex-direction: row; /* Размещает элементы в одну линию */
-  align-items: center; /* Центрирует элементы по вертикали */
-  justify-content: space-between; /* Создает пространство между текстом и изображением */
+  max-width: 36rem;
 }
 
 .overlay__title, .overlay__description, .overlay__btns {
