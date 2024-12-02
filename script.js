@@ -237,15 +237,26 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   });
 }
 
-      var startTime = new Date("3 December 2022 21:37:00").getTime();
-      var timeNow = new Date().getTime();
-      var timePassed = (timeNow - startTime) / 1000;
-      document.getElementById("time").innerHTML = Math.round(timePassed);
-      setInterval(function(){
-        timeNow = new Date().getTime();
-        timePassed = (timeNow - startTime) / 1000;
-        document.getElementById("time").innerHTML = Math.round(timePassed);
-      }, 1000);
+document.addEventListener("DOMContentLoaded", function() {
+    // Начальное время (ваш начальный момент времени)
+    const startTime = new Date("3 December 2022 21:37:00").getTime();
+
+    // Функция для обновления времени
+    function updateTimer() {
+        const timeNow = new Date().getTime();
+        const timePassed = Math.round((timeNow - startTime) / 1000);
+        const timeElement = document.getElementById("time");
+        if (timeElement) {
+            timeElement.innerHTML = timePassed;
+        }
+    }
+
+    // Обновляем время при загрузке
+    updateTimer();
+
+    // Запускаем интервал для обновления каждую секунду
+    setInterval(updateTimer, 1000);
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     const cells = document.querySelectorAll('.calendar-cell');
