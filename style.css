@@ -82,11 +82,9 @@ strong {
   max-width: 50px; /* Максимальная ширина изображения */
 }
 
-.overlay__image img {
+#oursimg {
   width: 20%;
   height: auto; /* Сохраняет пропорции изображения */
-  border-radius: 15px; /* Сделайте края округлыми, если нужно */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Небольшая тень */
 }
 
 .text-gradient {
