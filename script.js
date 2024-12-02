@@ -111,7 +111,7 @@ class Orb {
     // Используем debounce для изменения размеров окна
     window.addEventListener(
       "resize",
-      debounce(() => {
+      _.debounce(() => {
         this.bounds = this.setBounds();
       }, 250)
     );
