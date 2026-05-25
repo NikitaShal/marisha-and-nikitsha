@@ -56,15 +56,27 @@
 
     <script>
       const startTime = new Date('2022-12-03T21:37:00+03:00').getTime()
+      const stopTime = new Date('2026-06-30T10:00:00+03:00').getTime()
       const timeElement = document.getElementById('time')
+      let timerIntervalId
+
+      function getTimerSeconds(now = Date.now()) {
+        return Math.round((Math.min(now, stopTime) - startTime) / 1000)
+      }
+
+      window.getTimerSeconds = getTimerSeconds
 
       function updateTimer() {
         if (!timeElement) return
-        timeElement.textContent = Math.round((Date.now() - startTime) / 1000)
+        timeElement.textContent = getTimerSeconds()
+
+        if (Date.now() >= stopTime && timerIntervalId) {
+          clearInterval(timerIntervalId)
+        }
       }
 
       updateTimer()
-      setInterval(updateTimer, 1000)
+      timerIntervalId = setInterval(updateTimer, 1000)
     </script>
   </body>
 </html>
