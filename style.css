@@ -1,4 +1,7 @@
 :root {
+  --hue: 315;
+  --hue-complimentary1: 345;
+  --hue-complimentary2: 195;
   --dark-color: hsl(var(--hue), 100%, 9%);
   --light-color: hsl(var(--hue), 95%, 98%);
   --base: hsl(var(--hue), 95%, 50%);
@@ -26,14 +29,25 @@ html {
 }
 
 body {
-  max-width: 1920px;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  min-height: 100svh;
+  overflow-x: hidden;
   padding: 2rem;
   font-family: var(--font-family);
   color: var(--dark-color);
-  background: var(--bg-gradient);
+  background:
+    linear-gradient(90deg, rgba(255, 244, 225, 0.72), rgba(255, 255, 255, 0.18)),
+    url("output-1.jpg") center / cover no-repeat fixed,
+    var(--bg-gradient);
+}
+
+.hero {
+  width: 100%;
+  min-height: calc(100vh - 4rem);
+  min-height: calc(100svh - 4rem);
+  display: grid;
+  place-items: center;
+  align-content: center;
 }
 
 .orb-canvas {
@@ -52,12 +66,13 @@ strong {
 
 .overlay {
   width: 100%;
-  max-width: 1140px;
-  max-height: 740px;
-  padding: 8rem 6rem;
+  max-width: min(1140px, 100%);
+  padding: 2.75rem 5rem;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.375);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.125);
@@ -70,21 +85,40 @@ strong {
 }
 
 .overlay__inner {
-  max-width: 36rem;
-}
-
-.overlay__title, .overlay__description, .overlay__btns {
-  flex: 1; /* Текстовая часть займет больше места */
-}
-
-.overlay__image {
-  flex: 0.4; /* Установите пропорцию для изображения */
-  max-width: 50px; /* Максимальная ширина изображения */
+  width: 100%;
+  min-width: 0;
+  max-width: 42rem;
 }
 
 #oursimg {
-  height: 350px;
-  width: auto; /* Сохраняет пропорции изображения */
+  width: min(34vw, 190px);
+  height: auto;
+  margin-bottom: -1.3rem;
+  filter: drop-shadow(0 1rem 1.5rem rgba(27, 8, 24, 0.24));
+  z-index: 1;
+}
+
+.overlay__title {
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+
+.overlay__title-text,
+.overlay__title-unit {
+  display: block;
+  max-width: 44rem;
+  font-size: clamp(1.55rem, 3vw, 3.25rem);
+  line-height: 1.08;
+}
+
+#time {
+  display: block;
+  margin: 0.4rem 0;
+  font-size: clamp(3rem, 8vw, 6.25rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0.1rem 0.2rem rgba(72, 0, 58, 0.12);
 }
 
 .text-gradient {
@@ -103,6 +137,7 @@ strong {
   font-size: 1rem;
   line-height: 1.75rem;
   margin-bottom: 3rem;
+  overflow-wrap: anywhere;
 }
 
 .overlay__btns {
@@ -163,24 +198,27 @@ a {
 
 @media only screen and (max-width: 1140px) {
   .overlay {
-    padding: 8rem 4rem;
+    padding: 3rem 4rem;
   }
 }
 
 @media only screen and (max-width: 840px) {
   body {
     padding: 1.5rem;
+    background:
+      linear-gradient(180deg, rgba(255, 244, 225, 0.76), rgba(255, 255, 255, 0.26)),
+      url("output-1IphoneBG.jpg") center / cover no-repeat fixed,
+      var(--bg-gradient);
+  }
+
+  .hero {
+    min-height: calc(100vh - 3rem);
+    min-height: calc(100svh - 3rem);
   }
 
   .overlay {
-    padding: 4rem;
+    padding: 2.5rem 3rem;
     height: auto;
-  }
-
-  .overlay__title {
-    font-size: 1.25rem;
-    line-height: 2rem;
-    margin-bottom: 1.5rem;
   }
 
   .overlay__description {
@@ -191,8 +229,27 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .hero {
+    min-height: calc(100vh - 2rem);
+    min-height: calc(100svh - 2rem);
+  }
+
   .overlay {
     padding: 1.5rem;
+    border-radius: 1.25rem;
+  }
+
+  .overlay__title-text,
+  .overlay__title-unit {
+    font-size: 1.55rem;
+  }
+
+  #time {
+    font-size: clamp(2.65rem, 12vw, 3.4rem);
   }
 
   .overlay__btns {
@@ -207,6 +264,10 @@ a {
 
   .overlay__btn:first-child {
     margin-bottom: 1rem;
+  }
+
+  #oursimg {
+    width: min(58vw, 180px);
   }
 }
 

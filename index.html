@@ -1,54 +1,70 @@
-<html>
+<!doctype html>
+<html lang="ru">
   <head>
-    <title>Мариша и Никита</title>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#9f00a7">
-<meta name="theme-color" content="#ffffff">
-<img id="oursimg" src="/Remove-bg.ai_1733170850669.png" alt="С любовью, Никита" />
-<link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="style.css">
+    <title>Мариша и Никита</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#9f00a7" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <canvas class="orb-canvas"></canvas>
 
-<script src="https://cdn.jsdelivr.net/npm/lodash.debounce@4.0.8/index.min.js"></script>
+    <main class="hero">
+      <img id="oursimg" src="Remove-bg.ai_1733170850669.png" alt="С любовью, Никита" />
 
-<script type="module" src="script.js"></script>
-<body>
-<!-- Canvas -->
-<canvas class="orb-canvas"></canvas>
-<!-- Overlay -->
-<div class="overlay">
-  <!-- Overlay inner wrapper -->
-  <div class="overlay__inner">
-    <!-- Title -->
-    <h1 class="overlay__title">
-      С момента первого поцелуя Марины и Никиты прошло
-      <span id="time" class="text-gradient">5669072</span> секунд
-    </h1>
-    <!-- Description -->
-    <p class="overlay__description">
-      Дорогая моя Мариша! На этой странице, созданной персонально для тебя, иногда будет появлятся что-то новое. Ты можешь сама заходить на страницу так часто, как захочешь.
-      <strong>Иногда я буду еле заметно намекать на обновления ;)</strong>
-    </p>
-    <!-- Buttons -->
-    <div class="overlay__btns">
+      <section class="overlay" aria-label="Таймер Мариши и Никиты">
+        <div class="overlay__inner">
+          <h1 class="overlay__title">
+            <span class="overlay__title-text">С момента первого поцелуя Марины и Никиты прошло</span>
+            <span id="time" class="text-gradient">0</span>
+            <span class="overlay__title-unit">секунд</span>
+          </h1>
 
-      <button class="overlay__btn overlay__btn--transparent">
-        <a href="advent.html">
-          Адвент-календарь 2024
-        </a>
-      </button>
+          <p class="overlay__description">
+            Дорогая моя Мариша! На этой странице, созданной персонально для тебя, иногда
+            будет появлятся что-то новое. Ты можешь сама заходить на страницу так часто,
+            как захочешь.
+            <strong>Иногда я буду еле заметно намекать на обновления ;)</strong>
+          </p>
 
-      <button class="overlay__btn overlay__btn--colors">
-        <a class="savepage__btn" href="Screenshot 2023-02-07 at 12.42.40.png" target="_blank">Сохранить страницу</a>
-        <span class="overlay__btn-emoji"></span>
-      </button>
-    </div>
-  </div>
-</div>
-</body>
+          <div class="overlay__btns">
+            <button class="overlay__btn overlay__btn--transparent">
+              <a href="advent.html">Адвент-календарь 2024</a>
+            </button>
+
+            <button class="overlay__btn overlay__btn--colors">
+              <a class="savepage__btn" href="Screenshot 2023-02-07 at 12.42.40.png" target="_blank">
+                Сохранить страницу
+              </a>
+              <span class="overlay__btn-emoji"></span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const startTime = new Date('2022-12-03T21:37:00+03:00').getTime()
+      const timeElement = document.getElementById('time')
+
+      function updateTimer() {
+        if (!timeElement) return
+        timeElement.textContent = Math.round((Date.now() - startTime) / 1000)
+      }
+
+      updateTimer()
+      setInterval(updateTimer, 1000)
+    </script>
+  </body>
 </html>

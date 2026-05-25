@@ -5,6 +5,15 @@ import hsl from "https://cdn.skypack.dev/hsl-to-hex";
 
 console.log("Я тебя люблю, моя дорогая Марина.");
 
+const debounce = window._?.debounce ?? ((callback, wait) => {
+  let timeoutId;
+
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => callback(...args), wait);
+  };
+});
+
 // Функция создания снежинки
 function createSnowflake() {
   const snowFlake = document.createElement('span');
@@ -109,7 +118,7 @@ class Orb {
     // Используем debounce для изменения размеров окна
     window.addEventListener(
       "resize",
-      _.debounce(() => {
+      debounce(() => {
         this.bounds = this.setBounds();
       }, 250)
     );
@@ -195,23 +204,6 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     orb.render();
   });
 }
-
-// Таймер
-document.addEventListener("DOMContentLoaded", function() {
-    const startTime = new Date("3 December 2022 21:37:00").getTime();
-
-    function updateTimer() {
-        const timeNow = new Date().getTime();
-        const timePassed = Math.round((timeNow - startTime) / 1000);
-        const timeElement = document.getElementById("time");
-        if (timeElement) {
-            timeElement.innerHTML = timePassed;
-        }
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-});
 
 // Адвент-календарь
 document.addEventListener('DOMContentLoaded', function() {
